@@ -1,0 +1,24 @@
+export declare const ERROR: {
+    TYPE_SERVICE_NOT_FOUND: string;
+    TYPE_SERVICE_NOT_FOUND_IN_DB: string;
+    NAME_SERVICE_NOT_FOUND: string;
+    TYPE_NOT_FOUND: string;
+    SERVICE_GROUP_NOT_FOUND: string;
+    SERVICE_GROUP_NOT_FOUND_IN_DB: string;
+    CAPACITY_NOT_FOUND: string;
+    CAPACITY_NOT_FOUND_IN_DB: string;
+    CONTRACT_NOT_FOUND: string;
+    CONTRACT_NOT_FOUND_IN_DB: string;
+    TYPE_SERVICE_USE_NOT_FOUND: string;
+    TYPE_SERVICE_USE_NOT_FOUND_IN_DB: string;
+    SUPPLIER_USE_NOT_FOUND: string;
+    SUPPLIER_USE_NOT_FOUND_IN_DB: string;
+    PRODUCER_USE_NOT_FOUND: string;
+    PRODUCER_USE_NOT_FOUND_IN_DB: string;
+    BUYING_FEE_NOT_FOUND: string;
+    BUYING_FEE_NOT_FOUND_IN_DB: string;
+    BUYING_FEE_PRICE_NOT_FOUND: string;
+    SELLING_FEE_NOT_FOUND: string;
+    SELLING_FEE_NOT_FOUND_IN_DB: string;
+    SELLING_FEE_PRICE_NOT_FOUND: string;
+};
