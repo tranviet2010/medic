@@ -10,10 +10,16 @@ export class NoseFemur {
     age: number;
 
     @Prop({type: String })
-    average: string;
+    averageFemur: string;
 
     @Prop({ required: true })
-    limit: string;
+    limitFemur: string;
+
+    @Prop({type: String })
+    averageNose: string;
+
+    @Prop({ required: true })
+    limitNose: string;
     
 }
 

@@ -19,17 +19,17 @@ export class NoseFemurService {
     }
 
     async findByQuery(query: NoseFemur) {
-        const {age,average}=query
-        const results = await this.NoseFemurModel.find({age,average}).exec()
+        const {age,averageNose}=query
+        const results = await this.NoseFemurModel.find({age,averageNose}).exec()
         if(results && results.length>0){
             return { message: 'Found records', data: results };
         }
         else{
-            const resultAge = (await this.NoseFemurModel.find({age}))?.map(value=>value.limit)
-            const resultAverage = (await this.NoseFemurModel.find({age}))?.map(value=>value.average)
+            const resultAge = (await this.NoseFemurModel.find({age}))?.map(value=>value.limitNose)
+            const resultAverage = (await this.NoseFemurModel.find({age}))?.map(value=>value.averageNose)
             const [rangeString] = resultAge
             const [startString, endString] = rangeString.split('-')
-            const sum= Number(average) - Number(resultAverage)
+            const sum= Number(averageNose) - Number(resultAverage)
             const newStart= Number(startString) + sum
             const newEnd = Number(endString) + sum
             
