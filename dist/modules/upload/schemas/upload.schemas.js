@@ -6,7 +6,7 @@ const mongoose_1 = require("@nestjs/mongoose");
 let Upload = class Upload {
 };
 tslib_1.__decorate([
-    mongoose_1.Prop({ required: true }),
+    mongoose_1.Prop({ required: false }),
     tslib_1.__metadata("design:type", String)
 ], Upload.prototype, "customeId", void 0);
 tslib_1.__decorate([
@@ -18,6 +18,7 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:type", String)
 ], Upload.prototype, "path", void 0);
 Upload = tslib_1.__decorate([
+    mongoose_1.Schema({ timestamps: true, collection: 'files' }),
     mongoose_1.Schema()
 ], Upload);
 exports.Upload = Upload;

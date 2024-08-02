@@ -18,7 +18,7 @@ import { CustomerModule } from './modules/customer/customer.module';
 import { AgentModule } from './modules/agent/agent.module';
 import { HeightModule } from './modules/height/height.module';
 import { ResultModule } from './modules/result/result.module';
-import { FilesModule } from './modules/file/file.module';
+import { FilesModule } from './modules/upload/upload.module';
 import { ProductModule } from './modules/product/product.module';
 
 const Modules = [

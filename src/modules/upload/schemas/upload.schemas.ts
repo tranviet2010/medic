@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 
 @Schema({ timestamps: true, collection: 'files' })
 @Schema()
-export class File {
+export class Upload {
   @Prop({ required: false })
   customeId: string;
 
@@ -14,5 +14,5 @@ export class File {
   path: string;
 }
 
-export type FileDocument = File & Document;
-export const FileSchema = SchemaFactory.createForClass(File);
+export type UploadDocument = Upload & Document;
+export const UploadSchema = SchemaFactory.createForClass(Upload);

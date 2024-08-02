@@ -3,11 +3,11 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { existsSync, mkdirSync, writeFile } from 'fs';
 import { extname, join } from 'path';
-import { FileDocument } from './schemas/file.schemas';
+import { UploadDocument } from './schemas/upload.schemas';
 
 @Injectable()
 export class FilesService {
-  constructor(@InjectModel(File.name) private fileModel: Model<FileDocument>) {}
+  constructor(@InjectModel(File.name) private fileModel: Model<UploadDocument>) {}
 
   private async getUniqueFileName(originalName: string): Promise<string> {
     const fileExtName = extname(originalName);
@@ -48,7 +48,7 @@ export class FilesService {
     return newFile.save();
   }
 
-  async getFileByCustomeId(customeId: string): Promise<FileDocument> {
+  async getFileByCustomeId(customeId: string): Promise<UploadDocument> {
     return this.fileModel.findOne({ customeId }).exec();
   }
 }

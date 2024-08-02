@@ -7,13 +7,27 @@ const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
 const fs_1 = require("fs");
 const path_1 = require("path");
-const file_schema_1 = require("./schemas/file.schema");
 let FilesService = class FilesService {
     constructor(fileModel) {
         this.fileModel = fileModel;
     }
-    async saveFile(file, customeId) {
-        const filePath = path_1.join(__dirname, '../../uploads', file.originalname);
+    async getUniqueFileName(originalName) {
+        const fileExtName = path_1.extname(originalName);
+        const baseName = originalName.replace(fileExtName, '');
+        let newFileName = originalName;
+        let counter = 1;
+        while (await this.fileModel.findOne({ filename: newFileName }).exec()) {
+            newFileName = `${baseName}(${counter++})${fileExtName}`;
+        }
+        return newFileName;
+    }
+    async saveFile(file) {
+        const uploadsPath = path_1.join(__dirname, '../../../uploads', file.originalname);
+        if (!fs_1.existsSync(uploadsPath)) {
+            fs_1.mkdirSync(uploadsPath, { recursive: true });
+        }
+        const uniqueFileName = await this.getUniqueFileName(file.originalname);
+        const filePath = path_1.join(uploadsPath, uniqueFileName);
         fs_1.writeFile(filePath, file.buffer, (err) => {
             if (err) {
                 console.error('Failed to save file:', err);
@@ -22,8 +36,7 @@ let FilesService = class FilesService {
             console.log('File saved successfully');
         });
         const newFile = new this.fileModel({
-            customeId,
-            filename: file.originalname,
+            filename: uniqueFileName,
             path: filePath,
         });
         return newFile.save();
@@ -34,7 +47,7 @@ let FilesService = class FilesService {
 };
 FilesService = tslib_1.__decorate([
     common_1.Injectable(),
-    tslib_1.__param(0, mongoose_1.InjectModel(file_schema_1.File.name)),
+    tslib_1.__param(0, mongoose_1.InjectModel(File.name)),
     tslib_1.__metadata("design:paramtypes", [mongoose_2.Model])
 ], FilesService);
 exports.FilesService = FilesService;

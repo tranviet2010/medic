@@ -20,7 +20,7 @@ const customer_module_1 = require("./modules/customer/customer.module");
 const agent_module_1 = require("./modules/agent/agent.module");
 const height_module_1 = require("./modules/height/height.module");
 const result_module_1 = require("./modules/result/result.module");
-const file_module_1 = require("./modules/file/file.module");
+const upload_module_1 = require("./modules/upload/upload.module");
 const product_module_1 = require("./modules/product/product.module");
 const Modules = [
     common_1.Logger,
@@ -47,7 +47,7 @@ const Modules = [
     agent_module_1.AgentModule,
     height_module_1.HeightModule,
     result_module_1.ResultModule,
-    file_module_1.FilesModule,
+    upload_module_1.FilesModule,
     product_module_1.ProductModule
 ];
 exports.default = Modules;
