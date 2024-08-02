@@ -11,7 +11,7 @@ let FilesModule = class FilesModule {
 };
 FilesModule = tslib_1.__decorate([
     common_1.Module({
-        imports: [mongoose_1.MongooseModule.forFeature([{ name: File.name, schema: upload_schemas_1.UploadSchema }])],
+        imports: [mongoose_1.MongooseModule.forFeature([{ name: upload_schemas_1.Upload.name, schema: upload_schemas_1.UploadSchema }])],
         controllers: [upload_controller_1.FilesController],
         providers: [upload_service_1.FilesService],
     })

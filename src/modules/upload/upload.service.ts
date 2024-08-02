@@ -3,11 +3,11 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { existsSync, mkdirSync, writeFile } from 'fs';
 import { extname, join } from 'path';
-import { UploadDocument } from './schemas/upload.schemas';
+import { Upload, UploadDocument } from './schemas/upload.schemas';
 
 @Injectable()
 export class FilesService {
-  constructor(@InjectModel(File.name) private fileModel: Model<UploadDocument>) {}
+  constructor(@InjectModel(Upload.name) private fileModel: Model<UploadDocument>) {}
 
   private async getUniqueFileName(originalName: string): Promise<string> {
     const fileExtName = extname(originalName);

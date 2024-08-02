@@ -7,6 +7,7 @@ const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
 const fs_1 = require("fs");
 const path_1 = require("path");
+const upload_schemas_1 = require("./schemas/upload.schemas");
 let FilesService = class FilesService {
     constructor(fileModel) {
         this.fileModel = fileModel;
@@ -47,7 +48,7 @@ let FilesService = class FilesService {
 };
 FilesService = tslib_1.__decorate([
     common_1.Injectable(),
-    tslib_1.__param(0, mongoose_1.InjectModel(File.name)),
+    tslib_1.__param(0, mongoose_1.InjectModel(upload_schemas_1.Upload.name)),
     tslib_1.__metadata("design:paramtypes", [mongoose_2.Model])
 ], FilesService);
 exports.FilesService = FilesService;

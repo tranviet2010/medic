@@ -5057,8 +5057,8 @@
         "affectsGlobalScope": false
       },
       "../src/modules/upload/upload.service.ts": {
-        "version": "2e13955e3bbade2d90fc8485032885f47e2ec88bf3474a97722e50004aa2b636",
-        "signature": "08fb3e33f94cd3a63d9170e165d941e2bf9cfd5267ac1068cf793a0e7420876e",
+        "version": "f72fc32c15f275c62014bb742d22a4a71e1a6ed66bf754295f6298305ab76d05",
+        "signature": "9285cebf41f2c9f35708ce21d490ce9cdac025a9c9fc577980cd2583770c58d8",
         "affectsGlobalScope": false
       },
       "../src/modules/upload/upload.controller.ts": {
@@ -5067,7 +5067,7 @@
         "affectsGlobalScope": false
       },
       "../src/modules/upload/upload.module.ts": {
-        "version": "39e00ab782bb6f274f0b1bc274d27701d94ce1602f1e766c71664ec87ed08f1d",
+        "version": "6da982ee7d9b869780363d35b30538747c79ef3245886a0c7431055f2337af7b",
         "signature": "7536446e76a5a61c1e395d9de80100924bcdd2c52261982fad783bd73a5790fb",
         "affectsGlobalScope": false
       },
@@ -71222,6 +71222,7 @@
         "../src/modules/auth/dto/payload-refresh-token.dto.ts",
         "../src/modules/auth/dto/response-login.dto.ts",
         "../src/modules/auth/dto/response-refresh-token.dto.ts",
+        "../src/modules/client/schemas/client.schema.ts",
         "../src/modules/user/schemas/user.schema.ts",
         "../src/modules/user/user.service.ts",
         "../src/shares/dtos/payload-access-token.dto.ts"
@@ -71253,6 +71254,7 @@
         "../node_modules/@types/express/index.d.ts",
         "../node_modules/@types/passport-jwt/index.d.ts",
         "../src/modules/auth/auth.service.ts",
+        "../src/modules/client/client.service.ts",
         "../src/shares/dtos/payload-access-token.dto.ts"
       ],
       "../src/modules/auth/strategies/client-rt.strategy.ts": [
@@ -71344,7 +71346,8 @@
       "../src/modules/mail/mail.service.ts": [
         "../node_modules/@nestjs-modules/mailer/index.d.ts",
         "../node_modules/@types/bull/index.d.ts",
-        "../node_modules/@types/cache-manager/index.d.ts"
+        "../node_modules/@types/cache-manager/index.d.ts",
+        "../src/modules/client/dto/sign-up.dto.ts"
       ],
       "../src/modules/nose-femur/nosefemur.controller.ts": [
         "../src/modules/nose-femur/nosefemur.service.ts",

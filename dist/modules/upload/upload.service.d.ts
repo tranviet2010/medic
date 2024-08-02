@@ -24,12 +24,12 @@
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
 import { Model } from 'mongoose';
-import { UploadDocument } from './schemas/upload.schemas';
+import { Upload, UploadDocument } from './schemas/upload.schemas';
 export declare class FilesService {
     private fileModel;
     constructor(fileModel: Model<UploadDocument>);
     private getUniqueFileName;
-    saveFile(file: Express.Multer.File): Promise<import("./schemas/upload.schemas").Upload & import("mongoose").Document<any, any, any> & {
+    saveFile(file: Express.Multer.File): Promise<Upload & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
     }>;
     getFileByCustomeId(customeId: string): Promise<UploadDocument>;
