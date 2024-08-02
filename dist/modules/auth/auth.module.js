@@ -22,7 +22,11 @@ AuthModule = tslib_1.__decorate([
             client_module_1.ClientModule,
             user_module_1.UsersModule,
             jwt_1.JwtModule.register({}),
-            common_1.CacheModule.register(Object.assign(Object.assign({ store: redisStore }, redis_config_1.redisConfig), { isGlobal: true })),
+            common_1.CacheModule.register({
+                store: redisStore,
+                ...redis_config_1.redisConfig,
+                isGlobal: true,
+            }),
             axios_1.HttpModule.register({
                 timeout: 5000,
                 maxRedirects: 5,

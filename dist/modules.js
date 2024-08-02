@@ -8,7 +8,6 @@ const nestjs_console_1 = require("nestjs-console");
 const database_config_1 = require("./configs/database.config");
 const redis_config_1 = require("./configs/redis.config");
 const http_module_1 = require("./shares/http-clients/http.module");
-const upload_module_1 = require("./modules/upload/upload.module");
 const mongoose_1 = require("@nestjs/mongoose");
 const user_module_1 = require("./modules/user/user.module");
 const auth_module_1 = require("./modules/auth/auth.module");
@@ -20,6 +19,9 @@ const partner_module_1 = require("./modules/partner/partner.module");
 const customer_module_1 = require("./modules/customer/customer.module");
 const agent_module_1 = require("./modules/agent/agent.module");
 const height_module_1 = require("./modules/height/height.module");
+const result_module_1 = require("./modules/result/result.module");
+const file_module_1 = require("./modules/file/file.module");
+const product_module_1 = require("./modules/product/product.module");
 const Modules = [
     common_1.Logger,
     mongoose_1.MongooseModule.forRoot(database_config_1.mongodb.uri, database_config_1.mongodb.options),
@@ -29,9 +31,12 @@ const Modules = [
     bull_1.BullModule.forRoot({
         redis: redis_config_1.redisConfig,
     }),
-    common_1.CacheModule.register(Object.assign(Object.assign({ store: redisStore }, redis_config_1.redisConfig), { isGlobal: true })),
+    common_1.CacheModule.register({
+        store: redisStore,
+        ...redis_config_1.redisConfig,
+        isGlobal: true,
+    }),
     auth_module_1.AuthModule,
-    upload_module_1.UploadModule,
     user_module_1.UsersModule,
     mail_module_1.MailModule,
     param_module_1.ParamModule,
@@ -40,7 +45,10 @@ const Modules = [
     partner_module_1.PartnerModule,
     customer_module_1.CustomerModule,
     agent_module_1.AgentModule,
-    height_module_1.HeightModule
+    height_module_1.HeightModule,
+    result_module_1.ResultModule,
+    file_module_1.FilesModule,
+    product_module_1.ProductModule
 ];
 exports.default = Modules;
 //# sourceMappingURL=modules.js.map

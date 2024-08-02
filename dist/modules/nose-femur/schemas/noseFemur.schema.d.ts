@@ -26,8 +26,10 @@ import { Document, Schema as MongooseSchema } from 'mongoose';
 export declare const NOSE_FEMUR_MODEL = "nose-femur";
 export declare class NoseFemur {
     age: number;
-    average: string;
-    limit: string;
+    averageFemur: string;
+    limitFemur: string;
+    averageNose: string;
+    limitNose: string;
 }
 export declare type NoseFemurDocument = NoseFemur & Document;
 export declare const NoseFemurSchema: MongooseSchema<NoseFemur, import("mongoose").Model<NoseFemur, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, NoseFemur>;

@@ -6,7 +6,6 @@ import { ConsoleModule } from 'nestjs-console';
 import { mongodb } from 'src/configs/database.config';
 import { redisConfig } from 'src/configs/redis.config';
 import { HttpClientModule } from 'src/shares/http-clients/http.module';
-import { UploadModule } from './modules/upload/upload.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
@@ -18,6 +17,9 @@ import { PartnerModule } from './modules/partner/partner.module';
 import { CustomerModule } from './modules/customer/customer.module';
 import { AgentModule } from './modules/agent/agent.module';
 import { HeightModule } from './modules/height/height.module';
+import { ResultModule } from './modules/result/result.module';
+import { FilesModule } from './modules/file/file.module';
+import { ProductModule } from './modules/product/product.module';
 
 const Modules = [
   Logger,
@@ -34,7 +36,6 @@ const Modules = [
     isGlobal: true,
   }),
   AuthModule,
-  UploadModule,
   UsersModule,
   MailModule,
   ParamModule,
@@ -43,6 +44,9 @@ const Modules = [
   PartnerModule,
   CustomerModule,
   AgentModule,
-  HeightModule
+  HeightModule,
+  ResultModule,
+  FilesModule,
+  ProductModule
 ];
 export default Modules;

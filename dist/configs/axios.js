@@ -7,7 +7,11 @@ const axiosInstance = (options = {}) => {
         baseURL: `${baseUrl}`,
         timeout: Number(process.env.REACT_APP_TIMEOUT),
         responseType: 'json',
-        headers: Object.assign({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }, headers),
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            ...headers,
+        },
     });
 };
 exports.default = axiosInstance;

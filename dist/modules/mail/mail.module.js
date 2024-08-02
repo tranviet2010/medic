@@ -53,7 +53,11 @@ MailModule = tslib_1.__decorate([
                 },
             }),
             bull_1.BullModule.registerQueue(bullOptions),
-            common_1.CacheModule.register(Object.assign(Object.assign({ store: redisStore }, redis_config_1.redisConfig), { isGlobal: true })),
+            common_1.CacheModule.register({
+                store: redisStore,
+                ...redis_config_1.redisConfig,
+                isGlobal: true,
+            }),
         ],
         providers: [mail_service_1.MailService, mail_processor_1.MailProcessor, mail_console_1.MailConsole, common_1.Logger],
         exports: [mail_service_1.MailService],

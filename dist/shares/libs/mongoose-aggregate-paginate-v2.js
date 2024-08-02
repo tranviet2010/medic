@@ -27,9 +27,15 @@ const defaultOptions = {
     useFacet: true,
 };
 function aggregatePaginate(query, options, callback) {
-    options = Object.assign(Object.assign({}, defaultOptions), options);
+    options = {
+        ...defaultOptions,
+        ...options,
+    };
     query = query || {};
-    const customLabels = Object.assign(Object.assign({}, defaultOptions.customLabels), options.customLabels);
+    const customLabels = {
+        ...defaultOptions.customLabels,
+        ...options.customLabels,
+    };
     const defaultLimit = 10;
     const labelTotal = customLabels.totalDocs;
     const labelLimit = customLabels.limit;

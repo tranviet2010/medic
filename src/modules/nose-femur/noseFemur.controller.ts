@@ -19,7 +19,7 @@ export class NoseFemurController {
         return this.NoseFemurService.findAll(query)
     }
 
-    @Get('/finAll')
+    @Get('/finByQuery')
     async findAllQuery(@Query() query: NoseFemur): Promise<any> {
         return this.NoseFemurService.findByQuery(query)
     }

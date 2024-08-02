@@ -19,7 +19,10 @@ let UserRtStrategy = class UserRtStrategy extends passport_1.PassportStrategy(pa
         if (!refreshToken) {
             throw new common_1.UnauthorizedException('UNAUTHORIZED');
         }
-        return Object.assign(Object.assign({}, payload), { refreshToken });
+        return {
+            ...payload,
+            refreshToken,
+        };
     }
 };
 UserRtStrategy = tslib_1.__decorate([

@@ -49,7 +49,7 @@ const formatDecimal = (ret) => {
                 ret[key] = exports.formatDecimal(ret[key]);
             }
         }
-        catch (_a) { }
+        catch { }
         return ret;
     }
     return ret;

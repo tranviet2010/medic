@@ -17,7 +17,11 @@ UsersModule = tslib_1.__decorate([
     common_1.Module({
         imports: [
             mongoose_1.MongooseModule.forFeature([{ name: user_schema_1.User.name, schema: user_schema_1.UserSchema }]),
-            common_1.CacheModule.register(Object.assign(Object.assign({ store: redisStore }, redis_config_1.redisConfig), { isGlobal: true })),
+            common_1.CacheModule.register({
+                store: redisStore,
+                ...redis_config_1.redisConfig,
+                isGlobal: true,
+            }),
             mail_module_1.MailModule,
         ],
         providers: [user_service_1.UserService, mail_helpers_1.EmailService],

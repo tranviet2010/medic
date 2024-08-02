@@ -31,11 +31,25 @@ export declare class NoseFemurService {
     findAll(query: NoseFemur): Promise<(NoseFemur & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
     })[]>;
-    findByQuery(query: NoseFemur): Promise<number[] | {
+    findByQuery(query: NoseFemur): Promise<{
         message: string;
         data: (NoseFemur & import("mongoose").Document<any, any, any> & {
             _id: import("mongoose").Types.ObjectId;
         })[];
-    }>;
+    } | ({
+        newStartFemur: number;
+        newEndFemur: number;
+        sumFemur: number;
+        newStartNose?: undefined;
+        newEndNose?: undefined;
+        sumNose?: undefined;
+    } | {
+        newStartNose: number;
+        newEndNose: number;
+        sumNose: number;
+        newStartFemur?: undefined;
+        newEndFemur?: undefined;
+        sumFemur?: undefined;
+    })[]>;
     updateParam(id: string, updateParam: NoseFemur): Promise<NoseFemur>;
 }

@@ -22,7 +22,7 @@ let UserService = class UserService {
             throw new common_1.BadRequestException(exceptions_1.httpErrors.ACCOUNT_EXISTED);
         }
         const { hashPassword } = await bcrypt_1.generateHash(password);
-        return this.userModel.create(Object.assign(Object.assign({}, createUserDto), { password: hashPassword, status: user_enum_1.UserStatus.ACTIVE }));
+        return this.userModel.create({ ...createUserDto, password: hashPassword, status: user_enum_1.UserStatus.ACTIVE });
     }
     async findAll(getUsersDto) {
         const { sort, page, limit, id, name } = getUsersDto;

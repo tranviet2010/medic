@@ -57,7 +57,7 @@ let MailService = class MailService {
                 supportEmail: mailFrom,
             },
         });
-        const SignUpInfoCache = Object.assign(Object.assign({}, signUpInterface), { attempt: 0 });
+        const SignUpInfoCache = { ...signUpInterface, attempt: 0 };
         await this.cacheManager.set(`${auth_constants_1.SIGN_UP_CACHE}${email}`, JSON.stringify(SignUpInfoCache), {
             ttl: auth_constants_1.SIGN_UP_EXPIRY,
         });

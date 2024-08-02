@@ -43,7 +43,7 @@ const convertDataExcel = async (file) => {
         const temp = xlsx.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[i]]);
         temp.forEach((res, rowIndex) => {
             console.log(res);
-            data.push(Object.assign(Object.assign({}, res), { row: rowIndex + 1 }));
+            data.push({ ...res, row: rowIndex + 1 });
         });
     }
     return data;

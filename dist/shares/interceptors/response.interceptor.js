@@ -17,7 +17,9 @@ let ResponseTransformInterceptor = class ResponseTransformInterceptor {
                     metadata: null,
                 };
             }
-            const metadata = Object.assign({}, _data.metadata);
+            const metadata = {
+                ..._data.metadata,
+            };
             metadata.apiName = configs_1.getConfig().get('app.name');
             metadata.apiVersion = configs_1.getConfig().get('app.prefix');
             metadata.timestamp = new Date();
@@ -25,7 +27,7 @@ let ResponseTransformInterceptor = class ResponseTransformInterceptor {
                 metadata.length = ((_b = _data === null || _data === void 0 ? void 0 : _data.data) === null || _b === void 0 ? void 0 : _b.length) || (_data === null || _data === void 0 ? void 0 : _data.length);
             }
             if (req.query) {
-                metadata.query = Object.assign({}, req.query);
+                metadata.query = { ...req.query };
             }
             delete _data.metadata;
             return {

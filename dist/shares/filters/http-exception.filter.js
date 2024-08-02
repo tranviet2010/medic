@@ -9,11 +9,14 @@ let HttpExceptionFilter = class HttpExceptionFilter {
         const response = ctx.getResponse();
         const request = ctx.getRequest();
         const status = exception.getStatus();
-        const _a = exception.getResponse(), { code, message } = _a, rest = tslib_1.__rest(_a, ["code", "message"]);
+        const { code, message, ...rest } = exception.getResponse();
         response.status(status).json({
             code: code || 'SOME_THING_WENT_WRONG',
             statusCode: status || common_1.HttpStatus.INTERNAL_SERVER_ERROR,
-            info: Object.assign({ message: message || 'Unknown errors' }, rest),
+            info: {
+                message: message || 'Unknown errors',
+                ...rest,
+            },
             path: request.url,
         });
     }

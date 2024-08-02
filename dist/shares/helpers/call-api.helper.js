@@ -4,7 +4,11 @@ exports.CallApi = void 0;
 async function CallApi(url, query, method, header) {
     return await fetch(url, {
         method: method,
-        headers: Object.assign({ 'Content-Type': 'application/json', Accept: 'application/json' }, header),
+        headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+            ...header,
+        },
         body: JSON.stringify(query),
     });
 }

@@ -70,7 +70,7 @@ let ClientService = class ClientService {
             throw new common_1.BadRequestException(exceptions_1.httpErrors.CLIENT_CODE_INVALID);
         }
         if (code != signUpInfo.code) {
-            await this.cacheManager.set(`${auth_constants_1.SIGN_UP_CACHE}${email}`, JSON.stringify(Object.assign(Object.assign({}, signUpInfo), { attempt: signUpInfo.attempt + 1 })), {
+            await this.cacheManager.set(`${auth_constants_1.SIGN_UP_CACHE}${email}`, JSON.stringify({ ...signUpInfo, attempt: signUpInfo.attempt + 1 }), {
                 ttl: auth_constants_1.SIGN_UP_EXPIRY,
             });
             throw new common_1.BadRequestException(exceptions_1.httpErrors.CLIENT_EXPIRED_CODE);
@@ -87,8 +87,14 @@ let ClientService = class ClientService {
         if (client) {
             throw new common_1.BadRequestException(exceptions_1.httpErrors.CLIENT_EXISTED);
         }
-        return this.clientModel.create(Object.assign(Object.assign({}, createClientDto), { password, status: client_enum_1.ClientStatus.ACTIVE, is_verify: true, name,
-            gender }));
+        return this.clientModel.create({
+            ...createClientDto,
+            password,
+            status: client_enum_1.ClientStatus.ACTIVE,
+            is_verify: true,
+            name,
+            gender,
+        });
     }
     async createClient(createClientDto) {
         const { email, password } = createClientDto;
@@ -97,7 +103,7 @@ let ClientService = class ClientService {
             throw new common_1.BadRequestException(exceptions_1.httpErrors.CLIENT_EXISTED);
         }
         const { hashPassword } = await bcrypt_1.generateHash(password);
-        return this.clientModel.create(Object.assign(Object.assign({}, createClientDto), { password: hashPassword, status: client_enum_1.ClientStatus.ACTIVE }));
+        return this.clientModel.create({ ...createClientDto, password: hashPassword, status: client_enum_1.ClientStatus.ACTIVE });
     }
     async forgotPassword(forgotPasswordDto) {
         const { email } = forgotPasswordDto;
@@ -127,7 +133,7 @@ let ClientService = class ClientService {
             throw new common_1.BadRequestException(exceptions_1.httpErrors.CLIENT_CODE_INVALID);
         }
         if (verifyCode != forgotPasswordInfo.code) {
-            await this.cacheManager.set(`${auth_constants_1.FORGOT_PASSWORD_CACHE}${email}`, JSON.stringify(Object.assign(Object.assign({}, forgotPasswordInfo), { attempt: forgotPasswordInfo.attempt + 1 })), {
+            await this.cacheManager.set(`${auth_constants_1.FORGOT_PASSWORD_CACHE}${email}`, JSON.stringify({ ...forgotPasswordInfo, attempt: forgotPasswordInfo.attempt + 1 }), {
                 ttl: auth_constants_1.FORGOT_PASSWORD_EXPIRY,
             });
             throw new common_1.BadRequestException(exceptions_1.httpErrors.CLIENT_EXPIRED_CODE);

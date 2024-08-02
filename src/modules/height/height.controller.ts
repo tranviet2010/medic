@@ -19,7 +19,7 @@ export class HeightController {
         return this.HeightService.findAll(query)
     }
 
-    @Get('/finAll')
+    @Get('/finByQuery')
     async findAllQuery(@Query() query: Height): Promise<any> {
         return this.HeightService.findByQuery(query)
     }

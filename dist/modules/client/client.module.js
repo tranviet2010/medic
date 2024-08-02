@@ -20,7 +20,11 @@ ClientModule = tslib_1.__decorate([
                 { name: client_schema_1.Client.name, schema: client_schema_1.ClientSchema },
                 { name: client_policy_schema_1.ClientPolicy.name, schema: client_policy_schema_1.ClientPolicySchema },
             ]),
-            common_1.CacheModule.register(Object.assign(Object.assign({ store: redisStore }, redis_config_1.redisConfig), { isGlobal: true })),
+            common_1.CacheModule.register({
+                store: redisStore,
+                ...redis_config_1.redisConfig,
+                isGlobal: true,
+            }),
             mail_module_1.MailModule,
         ],
         controllers: [client_controller_1.ClientController],

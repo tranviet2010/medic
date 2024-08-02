@@ -13,11 +13,19 @@ tslib_1.__decorate([
 tslib_1.__decorate([
     mongoose_1.Prop({ type: String }),
     tslib_1.__metadata("design:type", String)
-], NoseFemur.prototype, "average", void 0);
+], NoseFemur.prototype, "averageFemur", void 0);
 tslib_1.__decorate([
     mongoose_1.Prop({ required: true }),
     tslib_1.__metadata("design:type", String)
-], NoseFemur.prototype, "limit", void 0);
+], NoseFemur.prototype, "limitFemur", void 0);
+tslib_1.__decorate([
+    mongoose_1.Prop({ type: String }),
+    tslib_1.__metadata("design:type", String)
+], NoseFemur.prototype, "averageNose", void 0);
+tslib_1.__decorate([
+    mongoose_1.Prop({ required: true }),
+    tslib_1.__metadata("design:type", String)
+], NoseFemur.prototype, "limitNose", void 0);
 NoseFemur = tslib_1.__decorate([
     mongoose_1.Schema({ timestamps: true, collection: exports.NOSE_FEMUR_MODEL })
 ], NoseFemur);

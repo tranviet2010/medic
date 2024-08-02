@@ -9,7 +9,10 @@ function IsPositiveBigNumber(validationOptions) {
             name: 'isPositiveBigNumber',
             target: object.constructor,
             propertyName: propertyName,
-            options: Object.assign(Object.assign({}, validationOptions), { message: 'BigNumber string greater than 0' }),
+            options: {
+                ...validationOptions,
+                message: 'BigNumber string greater than 0',
+            },
             validator: {
                 validate(value, _args) {
                     return typeof value === 'string' && new bignumber_js_1.default(value).gt(0);
