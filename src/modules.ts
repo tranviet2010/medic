@@ -20,6 +20,7 @@ import { HeightModule } from './modules/height/height.module';
 import { ResultModule } from './modules/result/result.module';
 import { FilesModule } from './modules/upload/upload.module';
 import { ProductModule } from './modules/product/product.module';
+import { CourseModule } from './modules/course/course.module';
 
 const Modules = [
   Logger,
@@ -47,6 +48,7 @@ const Modules = [
   HeightModule,
   ResultModule,
   FilesModule,
-  ProductModule
+  ProductModule,
+  CourseModule
 ];
 export default Modules;
