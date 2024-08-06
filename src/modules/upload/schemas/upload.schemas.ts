@@ -4,14 +4,12 @@ import { Document } from 'mongoose';
 @Schema({ timestamps: true, collection: 'files' })
 @Schema()
 export class Upload {
-  @Prop({ required: false })
-  customeId: string;
 
   @Prop({ required: true })
-  filename: string;
+  filename: string | any;
 
   @Prop({ required: true })
-  path: string;
+  path: string | any;
 }
 
 export type UploadDocument = Upload & Document;
