@@ -4,7 +4,6 @@ import { Model } from 'mongoose';
 import { existsSync, mkdirSync, writeFile } from 'fs';
 import { extname, join } from 'path';
 import { Upload, UploadDocument } from './schemas/upload.schemas';
-import * as fsExtra from 'fs-extra';
 
 @Injectable()
 export class FilesService {
@@ -24,21 +23,16 @@ export class FilesService {
   }
 
   async saveFile(file: Express.Multer.File) {
-    const uploadsPath = '/var/www/medic/uploads/';
-    const fileName = file.originalname;
-    const filePath = join(uploadsPath, fileName);
+    const uploadsPath = join(__dirname, '../../../uploads', file.originalname);
 
-    // Kiểm tra nếu thư mục không tồn tại thì tạo mới
     if (!existsSync(uploadsPath)) {
       mkdirSync(uploadsPath, { recursive: true });
     }
 
-    // Tạo tên file duy nhất (nếu cần thiết)
-    const uniqueFileName = await this.getUniqueFileName(fileName);
-    const uniqueFilePath = join(uploadsPath, uniqueFileName);
+    const uniqueFileName = await this.getUniqueFileName(file.originalname);
+    const filePath = join(uploadsPath, uniqueFileName);
 
-    // Lưu file vào thư mục
-    fsExtra.writeFile(uniqueFilePath, file.buffer, (err) => {
+    writeFile(filePath, file.buffer, (err) => {
       if (err) {
         console.error('Failed to save file:', err);
         throw new Error('Failed to save file');
@@ -46,10 +40,9 @@ export class FilesService {
       console.log('File saved successfully');
     });
 
-    // Giả sử bạn có một model để lưu thông tin file
     const newFile = new this.fileModel({
       filename: uniqueFileName,
-      path: uniqueFilePath,
+      path: filePath,
     });
 
     return newFile.save();
@@ -58,5 +51,4 @@ export class FilesService {
   async getFileByCustomeId(customeId: string): Promise<UploadDocument> {
     return this.fileModel.findOne({ customeId }).exec();
   }
-  
 }
