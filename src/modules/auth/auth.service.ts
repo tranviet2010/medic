@@ -16,17 +16,11 @@ import { ResponseLogin } from 'src/modules/auth/dto/response-login.dto';
 import { ResponseRefreshTokenDto } from './dto/response-refresh-token.dto';
 import { PayloadRefreshTokenDto } from './dto/payload-refresh-token.dto';
 import { httpErrors } from 'src/shares/exceptions';
-import { LoginFacebookDto } from './dto/login-facebook.dto';
 import * as config from 'config';
 import { HttpService } from '@nestjs/axios';
-import { catchError, lastValueFrom, map } from 'rxjs';
-import { UserFacebookInfoDto } from './dto/user-facebook-info.dto';
-import { UserGoogleInfoDto } from './dto/user-google-info.dto';
-import { LoginGoogleDto } from './dto/login-google.dto';
 import { validateHash } from 'src/shares/helpers/bcrypt';
 import { User } from '../user/schemas/user.schema';
 import { PayloadAccessTokenDto } from 'src/shares/dtos/payload-access-token.dto';
-import { ClientService } from '../client/client.service';
 import { Client } from '../client/schemas/client.schema';
 import { UserService } from '../user/user.service';
 const baseFacebookUrl = config.get<string>('facebook.graph_api');
@@ -74,7 +68,7 @@ export class AuthService {
       throw new BadRequestException(httpErrors.ACCOUNT_NOT_FOUND);
     }
 
-    if (!(await validateHash(password, user.password))) {
+    if (user?.password != password) {
       throw new UnauthorizedException(httpErrors.UNAUTHORIZED);
     }
 
@@ -86,6 +80,9 @@ export class AuthService {
     return {
       accessToken,
       refreshToken,
+      id:user._id,
+      email:user.email,
+      role:user.role,
       iat: Date.now(),
       exp: Date.now() + JWT_CONSTANTS.userAccessTokenExpiry,
     };

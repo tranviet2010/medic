@@ -23,6 +23,9 @@ export class Agent {
     email: string;
 
     @Prop({ required: false })
+    password: string;
+
+    @Prop({ required: false })
     note: string;
 
     @Prop({ type: Types.ObjectId, ref: 'Partner', required: true })

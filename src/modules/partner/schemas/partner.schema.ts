@@ -22,6 +22,9 @@ export class Partner {
     email:string;
 
     @Prop({required:false})
+    password:string;
+
+    @Prop({required:false})
     note:string;
 }
 

@@ -3,4 +3,7 @@ export class ResponseLogin {
   refreshToken: string;
   iat: number;
   exp: number;
+  role: any;
+  id:string;
+  email:string;
 }

@@ -24,9 +24,12 @@ export class UserService {
     if (user) {
       throw new BadRequestException(httpErrors.ACCOUNT_EXISTED);
     }
-    const { hashPassword } = await generateHash(password);
+    // const { hashPassword } = await generateHash(password);
 
-    return this.userModel.create({ ...createUserDto, password: hashPassword, status: UserStatus.ACTIVE });
+    // return this.userModel.create({ ...createUserDto, password: hashPassword, status: UserStatus.ACTIVE });
+
+    return this.userModel.create({ ...createUserDto, status: UserStatus.ACTIVE });
+
   }
 
   async findAll(getUsersDto: GetUsersDto): Promise<ResPagingDto<User[]>> {

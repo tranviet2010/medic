@@ -11,10 +11,9 @@ export class CreateUserDto {
   readonly email: string;
 
 
-  @ApiProperty({ required: true,default:[1] })
+  @ApiProperty({ required: true })
   @IsNotEmpty()
   readonly role: UserRole[];
-
 
   @ApiProperty({
     required: true,

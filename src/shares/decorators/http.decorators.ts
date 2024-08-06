@@ -18,3 +18,9 @@ export const ClientAuth = (clientRole?: ClientRole[]): MethodDecorator & ClassDe
 export const UserAuth = (userRole?: UserRole[]): MethodDecorator & ClassDecorator => {
   return applyDecorators(UseGuards(UserAtGuards, UserRolesGuard), Roles(userRole));
 };
+
+
+export const PartnerAuth = (userRole?: UserRole[]): MethodDecorator & ClassDecorator => {
+  return applyDecorators(UseGuards(UserAtGuards, UserRolesGuard), Roles(userRole));
+};
+
