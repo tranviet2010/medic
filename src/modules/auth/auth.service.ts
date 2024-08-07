@@ -82,6 +82,7 @@ export class AuthService {
       refreshToken,
       id:user._id,
       email:user.email,
+      phone:user.phone,
       role:user.role,
       iat: Date.now(),
       exp: Date.now() + JWT_CONSTANTS.userAccessTokenExpiry,

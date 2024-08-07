@@ -12,6 +12,9 @@ export class NoseFemur {
     @Prop({type: String })
     averageFemur: string;
 
+    @Prop({type: String })
+    male: string;
+
     @Prop({ required: true })
     limitFemur: string;
 

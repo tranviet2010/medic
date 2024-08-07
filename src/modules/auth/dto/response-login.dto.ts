@@ -6,4 +6,5 @@ export class ResponseLogin {
   role: any;
   id:string;
   email:string;
+  phone:string;
 }
