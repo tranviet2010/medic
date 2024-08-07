@@ -21,6 +21,7 @@ import { ResultModule } from './modules/result/result.module';
 import { FilesModule } from './modules/upload/upload.module';
 import { ProductModule } from './modules/product/product.module';
 import { CourseModule } from './modules/course/course.module';
+import { DocModule } from './modules/doc/doc.module';
 
 const Modules = [
   Logger,
@@ -49,6 +50,7 @@ const Modules = [
   ResultModule,
   FilesModule,
   ProductModule,
-  CourseModule
+  CourseModule,
+  DocModule
 ];
 export default Modules;

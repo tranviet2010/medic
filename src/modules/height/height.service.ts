@@ -20,8 +20,8 @@ export class HeightService {
 
     async findByQuery(query: Height) {
         //ham tim kiem ngay gan dung => tra ra ket qua
-        const { number_day, height, weight } = query
-        const results = await this.HeightModel.find({}).sort({number_day:1})
+        const { number_day, height, weight, male } = query
+        const results = await this.HeightModel.find({ male }).sort({ number_day: 1 })
         const get20Result = results[results.length - 1]
 
         let getEnd = JSON.parse(JSON.stringify(get20Result));
@@ -30,10 +30,10 @@ export class HeightService {
         const valueFin = this.findClosest(results, number_day)
         const getHeight = height ? this.getHeightBasedData(height, valueFin) : null
         const getWeight = weight ? this.getWeightBasedData(weight, valueFin) : null
-        const get20Height = getHeight ? this.getMatchingKey(getHeight,getEnd) : null
-        const get20Weight = getWeight ? this.getMatchingKey(getWeight,getEnd) : null
+        const get20Height = getHeight ? this.getMatchingKey(getHeight, getEnd) : null
+        const get20Weight = getWeight ? this.getMatchingKey(getWeight, getEnd) : null
 
-        return [ getHeight, getWeight,get20Height,get20Weight]
+        return [getHeight, getWeight, get20Height, get20Weight]
 
 
     }
@@ -162,12 +162,12 @@ export class HeightService {
         return null;
     }
 
-    getMatchingKey(valueToFind:any, dataObject:any) {
+    getMatchingKey(valueToFind: any, dataObject: any) {
         // Lấy key từ object valueToFind
         const keyToFind = Object.keys(valueToFind)[0];
-    
+
         // Hàm đệ quy để tìm key trong đối tượng
-        function findKey(obj:any) {
+        function findKey(obj: any) {
             if (obj?.hasOwnProperty(keyToFind)) {
                 return { [keyToFind]: obj[keyToFind] };
             }
@@ -181,7 +181,7 @@ export class HeightService {
             }
             return null;
         }
-    
+
         return findKey(dataObject);
     }
 

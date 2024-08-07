@@ -73,6 +73,9 @@ export class Height {
     @Prop({ type: Number })
     month_age: number;
 
+    @Prop({ type: String })
+    male: string;
+
     @Prop({ required: true, type: Number })
     number_day: number;
 

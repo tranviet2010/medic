@@ -15,4 +15,10 @@ export class LoginDto {
   })
   @IsNotEmpty()
   readonly password: string;
+
+  @ApiProperty({
+    required: false,
+    example: '123',
+  })
+  readonly phone: string;
 }

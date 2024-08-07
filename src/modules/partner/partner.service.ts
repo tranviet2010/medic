@@ -1,8 +1,9 @@
 import { Model } from 'mongoose';
-import { Injectable, Inject, NotFoundException } from '@nestjs/common';
+import { Injectable, Inject, NotFoundException, BadRequestException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Partner, PartnerDocument } from './schemas/partner.schema';
 import { User, UserDocument } from '../user/schemas/user.schema';
+import { httpErrors } from 'src/shares/exceptions';
 
 
 @Injectable()
@@ -11,19 +12,23 @@ export class PartnerService {
         @InjectModel(Partner.name) private readonly partnerModel: Model<PartnerDocument>) { }
 
     async create(param: Partner): Promise<void> {
+        const partner = await this.partnerModel.findOne({ phone: param.phone });
+        if (partner) {
+            throw new BadRequestException(httpErrors.ACCOUNT_EXISTED);
+        }
         const createdCat = new this.partnerModel(param);
         // const newUser =  new this.userModel({...param,role:[1]})
 
         createdCat.save();
         // newUser.save();
     }
-    async findAll(query:any) {
+    async findAll(query: any) {
         let value = await this.partnerModel.find(query).exec()
         return value
     }
 
     async updateNation(id: string, updateParam: Partner): Promise<Partner> {
-        const nation =await this.partnerModel.findByIdAndUpdate(id,updateParam,{new:true})
+        const nation = await this.partnerModel.findByIdAndUpdate(id, updateParam, { new: true })
         if (!nation) {
             throw new NotFoundException("user with id ${id} not found")
         }
@@ -32,5 +37,5 @@ export class PartnerService {
     }
     async deletePartner(id: string): Promise<void> {
         await this.partnerModel.findOneAndDelete({ id })
-      }
+    }
 }
