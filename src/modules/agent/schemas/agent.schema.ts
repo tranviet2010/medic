@@ -10,7 +10,7 @@ export class Agent {
     @Prop({ required: true })
     name: string;
 
-    @Prop({ required: false })
+    @Prop({ required: true })
     phone: string;
 
     @Prop({ required: true })

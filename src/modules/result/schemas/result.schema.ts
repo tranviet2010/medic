@@ -19,6 +19,9 @@ export class Result {
     name: string; // nguoi bao tro
 
     @Prop({ required: false })
+    date_check: string; 
+
+    @Prop({ required: false })
     sponsor: string;  // ho ten
 
     @Prop({ required: false })

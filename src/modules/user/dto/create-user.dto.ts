@@ -4,11 +4,19 @@ import { UserRole } from 'src/shares/enums/user.enum';
 
 export class CreateUserDto {
   @ApiProperty({
-    required: true,
+    required: false,
     example: 'user@gmail.com',
   })
   @IsNotEmpty()
   readonly email: string;
+
+
+  @ApiProperty({
+    required: true,
+    example: '0334595565',
+  })
+  @IsNotEmpty()
+  readonly phone: string;
 
 
   @ApiProperty({ required: true })
@@ -28,6 +36,7 @@ export class CreateUserDto {
   })
   @IsNotEmpty()
   readonly name: string;
+  
 
 
 }

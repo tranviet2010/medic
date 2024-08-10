@@ -16,6 +16,11 @@ export class GetUserDto {
   address?: string;
 
   @ApiProperty({
+    required: false,
+  })
+  phone?: string;
+
+  @ApiProperty({
     example: 'john.doe@example.com',
     description: 'The email address of the user',
     format: 'email',

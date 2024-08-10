@@ -9,10 +9,10 @@ export class Partner {
     @Prop({ required: true })
     name: string;
 
-    @Prop({ required: false })
+    @Prop({ required: true })
     phone: string;
 
-    @Prop({ required: true })
+    @Prop({ required: false })
     company_name: string;
 
     @Prop({required:false})

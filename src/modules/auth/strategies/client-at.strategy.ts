@@ -18,26 +18,5 @@ export class ClientAtStrategy extends PassportStrategy(Strategy, 'client-jwt') {
     });
   }
 
-  async validate(req: express.Request, args: PayloadAccessTokenDto): Promise<any> {
-    const accessToken = req.headers['authorization']?.split(' ')[1] || '';
-    const authenticatedUser = await this.authService.decodeAccessToken(accessToken);
-    if (!authenticatedUser) {
-      throw new UnauthorizedException('UNAUTHORIZED');
-    }
-
-    const client = await this.clientService.findById(args.userId);
-    if (!client) {
-      throw new UnauthorizedException();
-    }
-
-    if (client.is_banned) {
-      throw new UnauthorizedException(httpErrors.CLIENT_BANNED);
-    }
-
-    if (!client.is_verify) {
-      throw new UnauthorizedException(httpErrors.CLIENT_UNVERIFIED);
-    }
-
-    return client;
-  }
+  
 }

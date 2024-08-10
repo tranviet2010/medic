@@ -1,7 +1,8 @@
 import { Model } from 'mongoose';
-import { Injectable, Inject, NotFoundException } from '@nestjs/common';
+import { Injectable, Inject, NotFoundException, BadRequestException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Agent, AgentDocument } from './schemas/agent.schema';
+import { httpErrors } from 'src/shares/exceptions';
 
 
 @Injectable()
@@ -9,6 +10,11 @@ export class AgentService {
     constructor(@InjectModel(Agent.name) private readonly agentModel: Model<AgentDocument>) { }
 
     async create(param: Agent): Promise<void> {
+        const {phone} = param
+        let agent = await this.agentModel.find({phone}).exec()
+        if(agent){
+            throw new BadRequestException(httpErrors.ACCOUNT_EXISTED);
+        }
         const createdCat = new this.agentModel(param);
         createdCat.save();
     }

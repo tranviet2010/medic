@@ -18,27 +18,4 @@ export class UserAtStrategy extends PassportStrategy(Strategy, 'user-jwt') {
     });
   }
 
-  async validate(req: express.Request, args: PayloadAccessTokenDto): Promise<any> {
-    const accessToken = req.headers['authorization']?.split(' ')[1] || '';
-    const authenticatedUser = await this.authService.decodeAccessToken(accessToken);
-    if (!authenticatedUser) {
-      throw new UnauthorizedException('UNAUTHORIZED');
-    }
-
-    const user = await this.userService.findById(args.userId);
-
-    if (!user) {
-      throw new UnauthorizedException();
-    }
-
-    if (user.is_banned) {
-      throw new UnauthorizedException(httpErrors.USER_BANNED);
-    }
-
-    if (!user.is_verify) {
-      throw new UnauthorizedException(httpErrors.USER_UNVERIFIED);
-    }
-
-    return user;
-  }
 }

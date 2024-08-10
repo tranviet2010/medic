@@ -19,8 +19,8 @@ export class UserService {
   ) { }
 
   async createUser(createUserDto: CreateUserDto): Promise<UserDocument> {
-    const { email, password } = createUserDto;
-    const user = await this.userModel.findOne({ email });
+    const { phone, password } = createUserDto;
+    const user = await this.userModel.findOne({ phone });
     if (user) {
       throw new BadRequestException(httpErrors.ACCOUNT_EXISTED);
     }

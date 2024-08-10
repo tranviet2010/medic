@@ -13,7 +13,6 @@ export class User {
   code: string;
 
   @Prop({ type: String, select: false })
-  @Exclude()
   password: string;
 
   @Prop({ type: String })
