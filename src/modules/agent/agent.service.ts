@@ -11,7 +11,8 @@ export class AgentService {
 
     async create(param: Agent): Promise<void> {
         const {phone} = param
-        let agent = await this.agentModel.find({phone}).exec()
+        let agent = await this.agentModel.findOne({phone:param.phone})
+        console.log("agent",agent);
         if(agent){
             throw new BadRequestException(httpErrors.ACCOUNT_EXISTED);
         }
