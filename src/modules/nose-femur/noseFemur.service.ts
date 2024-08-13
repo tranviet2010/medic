@@ -56,5 +56,7 @@ export class NoseFemurService {
         return param
 
     }
-
+    async deleteNoseFemur(id: string): Promise<void> {
+        await this.NoseFemurModel.findOneAndDelete({ id })
+    }
 }

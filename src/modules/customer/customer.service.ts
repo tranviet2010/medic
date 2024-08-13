@@ -23,6 +23,9 @@ export class CustomerService {
             throw new NotFoundException("user with id ${id} not found")
         }
         return nation
+    }
 
+    async deleteCustomer(id: string): Promise<void> {
+        await this.customerModel.findOneAndDelete({ id })
     }
 }

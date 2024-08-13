@@ -32,4 +32,8 @@ export class AgentService {
         return nation
 
     }
+
+    async deleteAgent(id: string): Promise<void> {
+        await this.agentModel.findOneAndDelete({ id })
+    }
 }

@@ -13,7 +13,7 @@ export class Agent {
     @Prop({ required: true })
     phone: string;
 
-    @Prop({ required: true })
+    @Prop({ required: false })
     company_name: string;
 
     @Prop({ required: false })
@@ -22,7 +22,7 @@ export class Agent {
     @Prop({ required: false })
     email: string;
 
-    @Prop({ required: false })
+    @Prop({ required: true })
     password: string;
 
     @Prop({ required: false })

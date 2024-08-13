@@ -185,4 +185,8 @@ export class HeightService {
         return findKey(dataObject);
     }
 
+    async deleteHeight(id: string): Promise<void> {
+        await this.HeightModel.findOneAndDelete({ id })
+    }
+
 }

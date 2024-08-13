@@ -26,6 +26,10 @@ export class CourseService {
 
     }
 
+    async deleteCourse(id: string): Promise<void> {
+        await this.CourseModel.findOneAndDelete({ id })
+    }
+
 
 
 }
